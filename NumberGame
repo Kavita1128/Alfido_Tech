@@ -1,0 +1,37 @@
+import java.util.Random;
+import java.util.Scanner;
+public class Numberguess{
+public static void main(String[] args) {
+    Random random = new Random();
+    Scanner scanner = new Scanner(System.in);
+    final int MAX_NUMBER = 100;
+
+    int randomNumber = random.nextInt(MAX_NUMBER)+1;
+    int tryCount = 0;
+    while(true){
+     System.out.println("Enter Your Guess (1 - 100): ");
+     try{
+        int playerGuess = scanner.nextInt();
+        tryCount++;
+
+        if(playerGuess  == randomNumber)
+        {
+            System.out.println("Correct! You Win!! ");
+            System.out.println("It took you"+tryCount+"Tries To Guess The Number");
+            break;
+        }
+        else if(randomNumber > playerGuess){
+            System.out.println("Nope! The Number Is Lower. Guess It Again");
+        }
+        else
+        {
+            System.out.println("Nope! The Number Is Higher. Guess Again");
+        }
+     }catch(Exception e){
+        System.out.println("Please Enter A Valid Integer.");
+        scanner.next();
+     }
+    }
+    scanner.close();
+}
+}
